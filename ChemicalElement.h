@@ -7,6 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 class ChemicalElement
@@ -15,8 +17,12 @@ public:
     ChemicalElement();
     ChemicalElement(int number);
     virtual ~ChemicalElement();
-    void drawElectrons(GLuint &electrons, GLfloat angle);
+    void drawElectrons(GLuint &electrons, GLfloat electronMovementAngle);
     void drawProtonsAndNeutrons(GLuint &protonsAndNeutrons);
+    void helpForDrawProtonsAndNeutrons();
+    void drawByRings(void);
+    void drawCircle(int elements, GLfloat x, GLfloat y);
+    void drawProtonsAndNeutronsRandom();
     void showPeriods();
     int getProtons() const;
     void setProtons(int protons);

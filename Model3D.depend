@@ -1,16 +1,17 @@
 # depslib dependency file v1.0
-1516403210 source:d:\wojtek\studia\programowanie\c++\grafika komputerowa\3d\model3d\chemicalelement.cpp
+1516486784 source:d:\wojtek\studia\programowanie\c++\grafika komputerowa\3d\model3d\chemicalelement.cpp
 	"ChemicalElement.h"
 
-1515581399 d:\wojtek\studia\programowanie\c++\grafika komputerowa\3d\model3d\chemicalelement.h
+1516479859 d:\wojtek\studia\programowanie\c++\grafika komputerowa\3d\model3d\chemicalelement.h
 	<gl/gl.h>
 	<gl/glu.h>
 	<gl/glut.h>
 	<iostream>
 	<fstream>
 	<cstdlib>
+	<ctime>
 
-1516403030 source:d:\wojtek\studia\programowanie\c++\grafika komputerowa\3d\model3d\main.cpp
+1516476558 source:d:\wojtek\studia\programowanie\c++\grafika komputerowa\3d\model3d\main.cpp
 	<stdlib.h>
 	<gl/gl.h>
 	<gl/glu.h>

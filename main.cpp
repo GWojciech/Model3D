@@ -111,7 +111,7 @@ glutSwapBuffers();
 void ZegarFun(int val)
 {
     /* Rotacja obiektów wokó³ œrodka sceny MOŻE TO BYĆ JESZCZE UŻYTE DO OBRACANIA SIĘ ELEKTRONOW */
-    angle +=2.5;
+    angle +=1.5;
     if(angle >= 360)	angle -= 360;
     /* Odrysowanie sceny: */
     glutPostRedisplay();
