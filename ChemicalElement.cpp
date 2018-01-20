@@ -315,40 +315,46 @@ void drawRing(GLfloat x, GLfloat y, int elements)
     }
 }
 
-void ChemicalElement::drawByRings(void){
-    int tmp = mass-1, elements=8;
+void ChemicalElement::drawByRings(void)
+{
+    int tmp = mass-1, elements=8, counter=0;
     GLfloat x=4, y=0;
     glColor3f(0,1,0);
     glutSolidSphere(2,10,10);
-    while(tmp){
-        if(tmp!=(mass-1)){
-        elements*=2;
+    while(tmp>0)
+    {
+        if(counter)
+        {
+            elements=elements*2;
         }
-        if(tmp/elements){
-            tmp-=elements;
+        if(tmp/elements)
+        {
+            tmp=tmp-elements;
             drawRing(x,y,elements);
             x=-x;
             y+=4;
-            if(tmp){
+            if(tmp>0)
+            {
                 tmp--;
                 glPushMatrix();
-                    glTranslatef(0,y,0);
-                    glutSolidSphere(2,10,10);
+                glTranslatef(0,y,0);
+                glutSolidSphere(2,10,10);
                 glPopMatrix();
             }
-            if(tmp){
+            if(tmp>0)
+            {
                 tmp--;
                 glPushMatrix();
-                    glTranslatef(0,-y,0);
-                    glutSolidSphere(2,10,10);
+                glTranslatef(0,-y,0);
+                glutSolidSphere(2,10,10);
                 glPopMatrix();
-                x+=4;
-                y+=4;
+                x*=4;
+                y*=4;
             }
         }
         else
             drawRing(x,y,(int)tmp);
-            tmp=0;
+        tmp=0;
     }
 
 

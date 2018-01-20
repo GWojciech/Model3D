@@ -10,14 +10,14 @@
 #include "ChemicalElement.h"
 
 using namespace std;
-#define ANIM_FPS	40	/* Docelowa liczba ramek animacji na sekundê */
+#define ANIM_FPS	30	/* Docelowa liczba ramek animacji na sekundê */
 
 ChemicalElement *chem;
 /* Zmienne pomocnicze */
 static GLfloat lookA;	/* K¹t patrzenia w kierunku pionowym */
 static GLfloat angle;	/* K¹t obrotu obiektów wokó³ œrodka sceny (animacja) */
 static GLfloat moveCamera;
-
+static GLfloat zoom=1;
 static GLuint electrons;
 static GLuint protonsAndNeutrons;
 
@@ -97,12 +97,14 @@ void RenderScene(void)
     glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
     /* Ustawienie pozycji kamery (poziomo) */
     glRotatef(moveCamera, 0, 1, 0);
+    glPushMatrix();
+    glScalef(zoom, zoom, zoom);
         if(chem){
             chem ->drawElectrons(electrons, angle);
     }
     glCallList(electrons);
     glCallList(protonsAndNeutrons);
-
+    glPopMatrix();
 /* Zmiana bufora i opró¿nienie kolejki renderowania */
 glutSwapBuffers();
 }
@@ -126,6 +128,8 @@ void KeyFunc(unsigned char key, int x, int y)
     if(key=='x' || key=='X')    lookA -= 1;
     if(key=='a' || key=='A') moveCamera -=2.5;
     if(key=='d' || key=='D') moveCamera += 2.5;
+    if(key=='+'){ zoom+=0.25;}
+    if(key=='-'&&zoom>1){zoom-=0.25;};
     if(key == 0x1B){
         glDeleteLists(electrons, 1);
         glDeleteLists(protonsAndNeutrons, 1);
