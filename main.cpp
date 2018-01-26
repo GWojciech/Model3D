@@ -59,7 +59,7 @@ void setupScene(void)
 }
 
 /* Zmiana rozmiarów okna */
-void ChangeSize(int w, int h)
+void changeSize(int w, int h)
 {
     /* Zabezpieczenie przed dzieleniem przez zero */
     if(h==0)	h=1;
@@ -79,7 +79,7 @@ void ChangeSize(int w, int h)
 
 
 /* Funkcja rysuj¹ca */
-void RenderScene(void)
+void renderScene(void)
 {
     /* Wyczyszczenie t³a czarnym kolorem */
     glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -110,7 +110,7 @@ glutSwapBuffers();
 }
 
 /* Funkcja zegarowa: */
-void ZegarFun(int val)
+void zegarFun(int val)
 {
     /* Rotacja obiektów wokó³ œrodka sceny MOŻE TO BYĆ JESZCZE UŻYTE DO OBRACANIA SIĘ ELEKTRONOW */
     angle +=1.5;
@@ -118,11 +118,11 @@ void ZegarFun(int val)
     /* Odrysowanie sceny: */
     glutPostRedisplay();
     /* Ponowne wystartowanie zegara: */
-    glutTimerFunc(1000/ANIM_FPS, ZegarFun, 0);
+    glutTimerFunc(1000/ANIM_FPS, zegarFun, 0);
 }
 
 /* Funkcja obs³uguj¹ca klawiaturê */
-void KeyFunc(unsigned char key, int x, int y)
+void keyFunc(unsigned char key, int x, int y)
 {
     if(key=='w' || key=='W')    lookA += 1;
     if(key=='s' || key=='S')    lookA -= 1;
@@ -189,17 +189,17 @@ int main(int argc, char *argv[])
     glutAddMenuEntry("Wyjdz", 0);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
     /* Ustawienie funkcji rysuj¹cej zawartoœæ okna */
-    glutDisplayFunc(RenderScene);
+    glutDisplayFunc(renderScene);
     /* Funkcja ustawiaj¹ca parametry po zmianie rozmiaru okna */
-    glutReshapeFunc(ChangeSize);
+    glutReshapeFunc(changeSize);
     /* Funkcja obs³uguj¹ca klawiaturê */
-    glutKeyboardFunc(KeyFunc);
+    glutKeyboardFunc(keyFunc);
 
     /* Ustawienia OpenGL */
     setupScene();
 
     /* Start zegara po raz pierwszy */
-    glutTimerFunc(1000/ANIM_FPS, ZegarFun, 0);
+    glutTimerFunc(1000/ANIM_FPS, zegarFun, 0);
     /* Wejœcie do g³ównej pêtli programu */
     glutMainLoop();
     delete chem;

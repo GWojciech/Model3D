@@ -193,7 +193,6 @@ void ChemicalElement::setName(const string &name) {
 
 void ChemicalElement::drawElectrons(GLuint &electrons, GLfloat electronMovementAngle)
 {
-
     glDeleteLists(electrons, 1);
     electrons = glGenLists(1);
     glNewList(electrons, GL_COMPILE);
@@ -416,7 +415,7 @@ void ChemicalElement::drawColors(int tab[]){
 }
 }
 
-
+/*
 int findFreeIndexUp(int tab[]){
     int pom[9]={1,2,3,4,5,4,3,2,1};
     int valueOf4thElement=tab[4];
@@ -438,57 +437,86 @@ int findFreeIndexDown(int tab[]){
     }
     return -1;
 }
-
+*/
 
 void ChemicalElement::drawByRings(void)
 {
     red=green=0;
-    int last=0,tab[9], nucleons=mass, tmp, colorTab[mass];
-    fillZeroTab(tab, 9);
+    int last=0,tab[9], nucleons=mass, colorTab[mass];
+    fillZeroTab(tab, 7);
     fillZeroTab(colorTab, mass);
     drawColors(colorTab);
-    printTab(colorTab, mass);
-    //nucleons-=drawRing(tab[4], 4, nucleons, colorTab);
-    //tab[4]++;
+    //nucleons-=drawRing(tab[4],4, nucleons, colorTab);
+
     while(nucleons>0)
     {
         if(last==0)
         {
-                nucleons-=drawRing(tab[4],4, nucleons, colorTab);
-                tab[4]++;
-                last = 1;
+            nucleons-=drawRing(tab[3],3, nucleons, colorTab);
+            tab[3]++;
+            if(tab[3]-tab[4]==2&&tab[3]-tab[2]==2){
+                last=1;
+            }
+            else{
+                last=0;
+            }
 
         }
         else if (last==1)
         {
-            tmp=findFreeIndexUp(tab);
-            if(tmp==-1){
-                last=0;
+            nucleons-=drawRing(tab[2],2, nucleons, colorTab);
+            tab[2]++;
+            last = 2;
+
+        }
+        else if(last==2)
+        {
+
+            nucleons-=drawRing(tab[4],4, nucleons, colorTab);
+            tab[4]++;
+            if(((tab[4]-tab[5])==2)&&((tab[2]-tab[1])==2))
+            {
+                last = 3;
             }
-            else{
-                nucleons-=drawRing(tab[tmp],tmp, nucleons, colorTab);
-                tab[tmp]++;
-                last = 2;
+            else
+            {
+            last = 0;
             }
+
+        }
+        else if(last==3)
+        {
+
+            nucleons-=drawRing(tab[1],1, nucleons, colorTab);
+            tab[1]++;
+            last = 4;
 
 
         }
-        else
+        else if(last==4)
         {
-            if(tmp==-1){
-                    last=0;
+            nucleons-=drawRing(tab[5],5, nucleons, colorTab);
+            tab[5]++;
+            if(tab[1]-tab[0]==2&&tab[5]-tab[6]==2){
+                last=5;
             }
             else{
-                tmp=findFreeIndexDown(tab);
-                nucleons-=drawRing(tab[tmp],tmp, nucleons, colorTab);
-                tab[tmp]++;
-                last = 0;
+                last=0;
             }
-
+        }
+        else if(last==5){
+            nucleons-=drawRing(tab[0],0, nucleons, colorTab);
+            tab[0]++;
+            last = 6;
+        }
+        else if(last==6){
+            nucleons-=drawRing(tab[6],6, nucleons, colorTab);
+            tab[6]++;
+            last = 0;
         }
     }
     puts("");
-    printTab(tab, 9);
+    printTab(tab, 7);
     cout << "Narysowane elementy: " << drawedElements << " wymagane: " << mass << endl;
     cout << "Zielonych:" << green << " Czerwonych:"<< red << endl;
 }
