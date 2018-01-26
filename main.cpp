@@ -10,7 +10,7 @@
 #include "ChemicalElement.h"
 
 using namespace std;
-#define ANIM_FPS	30	/* Docelowa liczba ramek animacji na sekundê */
+#define ANIM_FPS	40	/* Docelowa liczba ramek animacji na sekundê */
 
 ChemicalElement *chem;
 /* Zmienne pomocnicze */
@@ -124,8 +124,8 @@ void ZegarFun(int val)
 /* Funkcja obs³uguj¹ca klawiaturê */
 void KeyFunc(unsigned char key, int x, int y)
 {
-    if(key=='z' || key=='Z')    lookA += 1;
-    if(key=='x' || key=='X')    lookA -= 1;
+    if(key=='w' || key=='W')    lookA += 1;
+    if(key=='s' || key=='S')    lookA -= 1;
     if(key=='a' || key=='A') moveCamera -=2.5;
     if(key=='d' || key=='D') moveCamera += 2.5;
     if(key=='+'){ zoom+=0.25;}

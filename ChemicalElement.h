@@ -20,6 +20,8 @@ public:
     void drawElectrons(GLuint &electrons, GLfloat electronMovementAngle);
     void drawProtonsAndNeutrons(GLuint &protonsAndNeutrons);
     void helpForDrawProtonsAndNeutrons();
+    int drawRing(int number, int index, int nucleons, int colorTab[]);
+    void drawColors(int tab[]);
     void drawByRings(void);
     void drawCircle(int elements, GLfloat x, GLfloat y);
     void drawProtonsAndNeutronsRandom();

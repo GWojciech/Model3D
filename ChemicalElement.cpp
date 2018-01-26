@@ -1,12 +1,12 @@
 #include "ChemicalElement.h"
 
 using namespace std;
-
+int drawedElements;
 ChemicalElement::ChemicalElement()
 {
     //ctor
 }
-
+int red, green;
 ChemicalElement::ChemicalElement(int number)
 {
     ifstream file;
@@ -301,63 +301,196 @@ void ChemicalElement::drawElectrons(GLuint &electrons, GLfloat electronMovementA
     glEndList();
 }
 
-void drawRing(GLfloat x, GLfloat y, int elements)
+int ChemicalElement::drawRing(int number, int index, int nucleons, int colorTab[])
 {
-    GLfloat rotation = (float)360/elements;
-    for(int i=0; i<elements; i++)
+    GLfloat posY= (float)(4-index)*4.0;
+    GLfloat rotation;
+    if(number==0)
     {
-        glRotatef(rotation, 0, 1, 0);
         glPushMatrix();
-            glTranslatef(x, y, 0);
-            glColor3f(0, 1, 0);
+            glTranslatef(0, posY, 0);
+            if(colorTab[nucleons]==1){
+            glColor3f(1, 0, 0);
+            green++;
+            }
+            else{
+                glColor3f(0,1,0);
+                red++;
+            }
             glutSolidSphere(2, 10, 10);
         glPopMatrix();
+        drawedElements++;
+        return 1;
+    }
+    else
+    {
+        int elements=4;
+        GLfloat posX= number*3.75;
+        for(int i=0; i<number; i++)
+        {
+            elements*=2;
+        }
+
+        if(nucleons/elements>0){
+            rotation = (float)360/elements;
+            drawedElements+=elements;
+            for(int i=0; i<elements; i++)
+            {
+                glRotatef(rotation, 0, 1, 0);
+                glPushMatrix();
+                    glTranslatef(posX, posY, 0);
+                    if(colorTab[nucleons-i]==1){
+                    glColor3f(1, 0, 0);
+                    green++;
+                    }
+                    else{
+                        glColor3f(0,1,0);
+                        red++;
+                    }
+                    glutSolidSphere(2, 10, 10);
+                glPopMatrix();
+            }
+
+        }
+        else{
+            rotation = (float)360/nucleons;
+            elements=nucleons;
+            drawedElements+=nucleons;
+            for(int i=0; i<elements; i++)
+            {
+                glRotatef(rotation, 0, 1, 0);
+                glPushMatrix();
+                    glTranslatef(posX, posY, 0);
+                     if(colorTab[nucleons-i]==1){
+                    glColor3f(1, 0, 0);
+                    green++;
+                    }
+                    else{
+                        glColor3f(0,1,0);
+                        red++;
+                    }
+                    glutSolidSphere(2, 10, 10);
+                glPopMatrix();
+            }
+
+        }
+        return elements;
+
     }
 }
 
+void fillZeroTab(int tab[], int numberOfElements)
+{
+    for(int i=0; i<numberOfElements; i++){
+        tab[i]=0;
+    }
+}
+
+void printTab(int tab[], int numberOfElements){
+    for(int i=0; i<numberOfElements; i++){
+        cout << "tab["<< i << "]: "<< tab[i] <<endl;
+    }
+}
+
+void ChemicalElement::drawColors(int tab[]){
+    srand(time(0));
+    int neutronsTmp=neutrons, protonsTmp=protons, drawNumber;
+    for(int i=0; i<mass; i++){
+        drawNumber=rand()%2;
+        if(drawNumber==1&&protonsTmp){
+            tab[i]=1;
+            protonsTmp--;
+        }
+        else if(drawNumber==0&&neutronsTmp){
+            tab[i]=2;
+            neutronsTmp--;
+        }
+        else if(drawNumber==1&&neutronsTmp){
+            tab[i]=2;
+            neutronsTmp--;
+        }
+        else if(drawNumber==0&&protonsTmp){
+            tab[i]=1;
+            protonsTmp--;
+        }
+}
+}
+
+
+int findFreeIndexUp(int tab[]){
+    int pom[9]={1,2,3,4,5,4,3,2,1};
+    int valueOf4thElement=tab[4];
+    for(int i=5; i<9; i++){
+        if(tab[i]<valueOf4thElement&&tab[i]<=pom[i]){
+            return i;
+        }
+    }
+    return -1;
+}
+
+int findFreeIndexDown(int tab[]){
+    int pom[9]={1,2,3,4,5,4,3,2,1};
+    int valueOf4thElement=tab[4];
+    for(int i=3; i>=0; i--){
+        if(tab[i]<valueOf4thElement&&tab[i]<=pom[i]){
+            return i;
+        }
+    }
+    return -1;
+}
+
+
 void ChemicalElement::drawByRings(void)
 {
-    int tmp = mass-1, elements=8, counter=0;
-    GLfloat x=4, y=0;
-    glColor3f(0,1,0);
-    glutSolidSphere(2,10,10);
-    while(tmp>0)
+    red=green=0;
+    int last=0,tab[9], nucleons=mass, tmp, colorTab[mass];
+    fillZeroTab(tab, 9);
+    fillZeroTab(colorTab, mass);
+    drawColors(colorTab);
+    printTab(colorTab, mass);
+    //nucleons-=drawRing(tab[4], 4, nucleons, colorTab);
+    //tab[4]++;
+    while(nucleons>0)
     {
-        if(counter)
+        if(last==0)
         {
-            elements=elements*2;
+                nucleons-=drawRing(tab[4],4, nucleons, colorTab);
+                tab[4]++;
+                last = 1;
+
         }
-        if(tmp/elements)
+        else if (last==1)
         {
-            tmp=tmp-elements;
-            drawRing(x,y,elements);
-            x=-x;
-            y+=4;
-            if(tmp>0)
-            {
-                tmp--;
-                glPushMatrix();
-                glTranslatef(0,y,0);
-                glutSolidSphere(2,10,10);
-                glPopMatrix();
+            tmp=findFreeIndexUp(tab);
+            if(tmp==-1){
+                last=0;
             }
-            if(tmp>0)
-            {
-                tmp--;
-                glPushMatrix();
-                glTranslatef(0,-y,0);
-                glutSolidSphere(2,10,10);
-                glPopMatrix();
-                x*=4;
-                y*=4;
+            else{
+                nucleons-=drawRing(tab[tmp],tmp, nucleons, colorTab);
+                tab[tmp]++;
+                last = 2;
             }
+
+
         }
         else
-            drawRing(x,y,(int)tmp);
-        tmp=0;
+        {
+            if(tmp==-1){
+                    last=0;
+            }
+            else{
+                tmp=findFreeIndexDown(tab);
+                nucleons-=drawRing(tab[tmp],tmp, nucleons, colorTab);
+                tab[tmp]++;
+                last = 0;
+            }
+
+        }
     }
-
-
+    puts("");
+    printTab(tab, 9);
+    cout << "Narysowane elementy: " << drawedElements << " wymagane: " << mass << endl;
+    cout << "Zielonych:" << green << " Czerwonych:"<< red << endl;
 }
 
 void ChemicalElement::drawProtonsAndNeutronsRandom(void){
@@ -425,8 +558,9 @@ void ChemicalElement::drawProtonsAndNeutrons(GLuint &protonsAndNeutrons){
     glDeleteLists(protonsAndNeutrons, 1);
     protonsAndNeutrons = glGenLists(1);
 	glNewList(protonsAndNeutrons, GL_COMPILE);
-    drawProtonsAndNeutronsRandom();
-    //drawByRings();
+    //drawProtonsAndNeutronsRandom();
+    drawedElements=0;
+    drawByRings();
     glEndList();
 }
 
