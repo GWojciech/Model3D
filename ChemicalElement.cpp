@@ -1,12 +1,10 @@
 #include "ChemicalElement.h"
 
 using namespace std;
-int drawedElements;
 ChemicalElement::ChemicalElement()
 {
     //ctor
 }
-int red, green;
 ChemicalElement::ChemicalElement(int number)
 {
     ifstream file;
@@ -22,6 +20,7 @@ ChemicalElement::ChemicalElement(int number)
         }
         getline(file, symbol, ',');
         this->symbol=symbol;
+
         getline(file, protons, ',');
         int tmp = atoi(protons.c_str());
         this->protons = tmp;
@@ -34,8 +33,7 @@ ChemicalElement::ChemicalElement(int number)
         this->name=name;
 
         getline(file, group, ',');
-        tmp = atoi(group.c_str());
-        this->group = tmp;
+        this->group = group;
 
         getline(file, period, ',');
         tmp = atoi(period.c_str());
@@ -163,13 +161,6 @@ void ChemicalElement::setMass(int mass) {
     ChemicalElement::mass = mass;
 }
 
-int ChemicalElement::getGroup() const {
-    return group;
-}
-
-void ChemicalElement::setGroup(int group) {
-    ChemicalElement::group = group;
-}
 
 int ChemicalElement::getPeriod() const {
     return period;
@@ -177,6 +168,14 @@ int ChemicalElement::getPeriod() const {
 
 void ChemicalElement::setPeriod(int period) {
     ChemicalElement::period = period;
+}
+
+const string &ChemicalElement::getGroup() const {
+    return group;
+}
+
+void ChemicalElement::setGroup(const string &group) {
+    ChemicalElement::group = group;
 }
 
 const string &ChemicalElement::getSymbol() const {
@@ -314,15 +313,12 @@ int ChemicalElement::drawRing(int number, int index, int nucleons, int colorTab[
             glTranslatef(0, posY, 0);
             if(colorTab[nucleons]==1){
             glColor3f(1, 0, 0);
-            green++;
             }
             else{
                 glColor3f(0,1,0);
-                red++;
             }
             glutSolidSphere(2, 10, 10);
         glPopMatrix();
-        drawedElements++;
         return 1;
     }
     else
@@ -336,7 +332,6 @@ int ChemicalElement::drawRing(int number, int index, int nucleons, int colorTab[
 
         if(nucleons/elements>0){
             rotation = (float)360/elements;
-            drawedElements+=elements;
             for(int i=0; i<elements; i++)
             {
                 glRotatef(rotation, 0, 1, 0);
@@ -344,11 +339,9 @@ int ChemicalElement::drawRing(int number, int index, int nucleons, int colorTab[
                     glTranslatef(posX, posY, 0);
                     if(colorTab[nucleons-i]==1){
                     glColor3f(1, 0, 0);
-                    green++;
                     }
                     else{
                         glColor3f(0,1,0);
-                        red++;
                     }
                     glutSolidSphere(2, 10, 10);
                 glPopMatrix();
@@ -358,7 +351,6 @@ int ChemicalElement::drawRing(int number, int index, int nucleons, int colorTab[
         else{
             rotation = (float)360/nucleons;
             elements=nucleons;
-            drawedElements+=nucleons;
             for(int i=0; i<elements; i++)
             {
                 glRotatef(rotation, 0, 1, 0);
@@ -366,11 +358,9 @@ int ChemicalElement::drawRing(int number, int index, int nucleons, int colorTab[
                     glTranslatef(posX, posY, 0);
                      if(colorTab[nucleons-i]==1){
                     glColor3f(1, 0, 0);
-                    green++;
                     }
                     else{
                         glColor3f(0,1,0);
-                        red++;
                     }
                     glutSolidSphere(2, 10, 10);
                 glPopMatrix();
@@ -419,38 +409,13 @@ void ChemicalElement::drawColors(int tab[]){
 }
 }
 
-/*
-int findFreeIndexUp(int tab[]){
-    int pom[9]={1,2,3,4,5,4,3,2,1};
-    int valueOf4thElement=tab[4];
-    for(int i=5; i<9; i++){
-        if(tab[i]<valueOf4thElement&&tab[i]<=pom[i]){
-            return i;
-        }
-    }
-    return -1;
-}
-
-int findFreeIndexDown(int tab[]){
-    int pom[9]={1,2,3,4,5,4,3,2,1};
-    int valueOf4thElement=tab[4];
-    for(int i=3; i>=0; i--){
-        if(tab[i]<valueOf4thElement&&tab[i]<=pom[i]){
-            return i;
-        }
-    }
-    return -1;
-}
-*/
 
 void ChemicalElement::drawByRings(void)
 {
-    red=green=0;
     int last=0,tab[9], nucleons=mass, colorTab[mass];
     fillZeroTab(tab, 7);
     fillZeroTab(colorTab, mass);
     drawColors(colorTab);
-    //nucleons-=drawRing(tab[4],4, nucleons, colorTab);
 
     while(nucleons>0)
     {
@@ -519,85 +484,59 @@ void ChemicalElement::drawByRings(void)
             last = 0;
         }
     }
-    puts("");
-    printTab(tab, 7);
-    cout << "Narysowane elementy: " << drawedElements << " wymagane: " << mass << endl;
-    cout << "Zielonych:" << green << " Czerwonych:"<< red << endl;
 }
 
-void ChemicalElement::drawProtonsAndNeutronsRandom(void){
-    srand(time(0));
-    GLfloat x,y,z;
-    glColor3f(0,1,0);
-    if(mass<=10){
-    for(int i=0; i<mass; i++){
-        x=-mass+rand()%mass;
-        y=-mass+rand()%mass;
-        z=-mass+rand()%mass;
-        glPushMatrix();
-            glTranslatef(x,y,z);
-            glutSolidSphere(2,10,10);
-        glPopMatrix();
-    }
-    }
-    else if(mass >10 && mass <=50){
-        for(int i=0; i<mass; i++){
-        x=-mass/2+rand()%mass;
-        y=-mass/2+rand()%mass;
-        z=-mass/2+rand()%mass;
-        glPushMatrix();
-            glTranslatef(x/6,y/6,z/6);
-            glutSolidSphere(2,10,10);
-        glPopMatrix();
-    }
-    }
-        else if(mass >50 && mass <=100){
-        for(int i=0; i<mass; i++){
-        x=-mass/2+rand()%mass;
-        y=-mass/2+rand()%mass;
-        z=-mass/2+rand()%mass;
-        glPushMatrix();
-            glTranslatef(x/7,y/7,z/7);
-            glutSolidSphere(2,10,10);
-        glPopMatrix();
-    }
-    }
-    else if(mass>100 && mass <200){
-        for(int i=0; i<mass; i++){
-        x=-mass/2+rand()%mass;
-        y=-mass/2+rand()%mass;
-        z=-mass/2+rand()%mass;
-        glPushMatrix();
-            glTranslatef(x/8,y/8,z/8);
-            glutSolidSphere(2,10,10);
-        glPopMatrix();
-    }
-    }
-    else{
-        for(int i=0; i<mass; i++){
-        x=-mass/2+rand()%mass;
-        y=-mass/2+rand()%mass;
-        z=-mass/2+rand()%mass;
-        glPushMatrix();
-            glTranslatef(x/10,y/10,z/10);
-            glutSolidSphere(2,10,10);
-        glPopMatrix();
-    }
-    }
-}
 
 void ChemicalElement::drawProtonsAndNeutrons(GLuint &protonsAndNeutrons){
     glDeleteLists(protonsAndNeutrons, 1);
     protonsAndNeutrons = glGenLists(1);
 	glNewList(protonsAndNeutrons, GL_COMPILE);
-    //drawProtonsAndNeutronsRandom();
-    drawedElements=0;
     drawByRings();
     glEndList();
 }
 
-void ChemicalElement::showPeriods(){
-    cout <<"Nazwa: "<< this->name << " K="<< this->k << " L=" << this->l << " M=" << this->m
-     << " N=" << this->n <<" O=" << this->o <<" P=" << this->p <<" Q=" << this->q <<  endl;
+string intToStr(int n)
+{
+    string tmp, ret;
+    do
+    {
+        tmp += n % 10 + 48;
+        n -= n % 10;
+    }
+    while(n /= 10);
+    for(int i = tmp.size()-1; i >= 0; i--)
+        ret += tmp[i];
+    return ret;
+}
 
+void ChemicalElement::showInformationsAboutElement(GLuint &informationsAboutElement)
+{
+    glDeleteLists(informationsAboutElement, 1);
+    string informations;
+    informations = "<Nazwa:" + name + "> <Symbol:"+ symbol + "> <Protony:" + intToStr(protons) +
+                   + "> <Neutrony:" + intToStr(neutrons) + "> <Grupa:" + group + ">";
+    glDeleteLists(informationsAboutElement, 1);
+    informationsAboutElement= glGenLists(1);
+	glNewList(informationsAboutElement, GL_COMPILE);
+    glColor3f(1.0,1.0,1.0);
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    glOrtho(0, 1024, 0, 768, -1.0f, 1.0f);
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    glPushAttrib(GL_DEPTH_TEST);
+    glDisable(GL_DEPTH_TEST);
+    glRasterPos2i(10, 730);
+    for (unsigned int i=0; i<informations.size(); i++)
+    {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, informations[i]);
+    }
+    glPopAttrib();
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glPopMatrix();
+    glEndList();
 }

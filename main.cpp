@@ -20,82 +20,70 @@ static GLfloat moveCamera;
 static GLfloat zoom=1;
 static GLuint electrons;
 static GLuint protonsAndNeutrons;
-
+static GLuint informationsAboutElements;
 /* Parametry œwiat³a i materia³ów */
 static GLfloat lightAmb[] = {0.1, 0.1, 0.1, 1.0};
 static GLfloat lightDif[] = {0.7, 0.7, 0.7, 1.0};
 static GLfloat lightPos[] = {100, 200, 0.0, 1.0};
 static GLfloat lightSpec[] = {1, 1, 1, 1};
 
-/* Funkcja ustawia parametry renderowania i oœwietlenie... */
-/* wywo³ywana na pocz¹tku programu */
+
+/** \brief
+ * Funkcja ustawia parametry renderowania i oświetlenie
+ * wywoływana na początku programu
+ */
+
 void setupScene(void)
 {
-    /* Bufor g³êbokoœci */
     glEnable(GL_DEPTH_TEST);
-    /* W³¹czenie oœwietlenia */
     glEnable(GL_LIGHTING);
 
-    /* Natê¿enie œwiat³a otoczenia (AMBIENT) */
     glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmb);
-    /* Natê¿enie œwiat³a rozpraszaj¹cego (DIFFUSE) */
     glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDif);
-    /* Œwiat³o nr 0 umieszczone nad scen¹ z prawej strony */
     glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
-    /* Natê¿enie odb³ysków */
     glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpec);
-    /* W³¹czenie œwiat³a nr 0 */
     glEnable(GL_LIGHT0);
 
-    /* Ustawienie odb³ysku materia³ów */
     glMaterialfv(GL_FRONT, GL_SPECULAR, lightSpec);
-    /* Skupienie i jasnoœæ plamy œwiat³a */
     glMateriali(GL_FRONT, GL_SHININESS, 64);
 
-    /* Œledzenie kolorów */
-    /* Wspó³czynniki odbicia œwiat³a s¹ takie same jak kolor */
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 }
 
-/* Zmiana rozmiarów okna */
+/** \brief
+ * Funkcja odpowiedzialna za odpowiednie ustawienie okna w przypadku zmiany
+ * rozmiaru
+ * \param w szerokość ekranu
+ * \param h wysokość ekranu
+ *
+ */
 void changeSize(int w, int h)
 {
-    /* Zabezpieczenie przed dzieleniem przez zero */
     if(h==0)	h=1;
-    /* Ustawienie widoku */
     glViewport(0, 0, w, h);
 
-    /* Ustawienie obszaru obcinania z uwzglêdnieniem proporcji okna */
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    /* Rzutowanie perspektywiczne */
     gluPerspective(50, (float)w/h, 130, 470);
 
-    /* Wyzerowanie macierzy widoku modelu dla funkcji rysuj¹cej */
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
 
-
-/* Funkcja rysuj¹ca */
+/** \brief
+ * Funkcja rysująca
+ *
+ */
 void renderScene(void)
 {
-    /* Wyczyszczenie t³a czarnym kolorem */
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    /* Wstêpne ustawienie sceny */
     glLoadIdentity();
-    /* Odsuniêcie œrodka sceny od obserwatora */
     glTranslatef(0, 0, -200);
-    /* Ustawienie k¹ta obserwacji */
     glRotatef(lookA, 1, 0, 0);
-
-    /* Pozycjonowanie œwiat³a */
-    /* Œwiat³o jest nieruchome wzglêdem obiektów - one przesuwaj¹ siê pod œwiat³em */
     glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
-    /* Ustawienie pozycji kamery (poziomo) */
     glRotatef(moveCamera, 0, 1, 0);
     glPushMatrix();
     glScalef(zoom, zoom, zoom);
@@ -104,24 +92,30 @@ void renderScene(void)
     }
     glCallList(electrons);
     glCallList(protonsAndNeutrons);
+    glCallList(informationsAboutElements);
     glPopMatrix();
-/* Zmiana bufora i opró¿nienie kolejki renderowania */
 glutSwapBuffers();
 }
 
-/* Funkcja zegarowa: */
+/** \brief
+ * Funkcja zegarowa
+ *  \param val wartość
+ */
 void zegarFun(int val)
 {
-    /* Rotacja obiektów wokó³ œrodka sceny MOŻE TO BYĆ JESZCZE UŻYTE DO OBRACANIA SIĘ ELEKTRONOW */
     angle +=1.5;
     if(angle >= 360)	angle -= 360;
-    /* Odrysowanie sceny: */
     glutPostRedisplay();
-    /* Ponowne wystartowanie zegara: */
     glutTimerFunc(1000/ANIM_FPS, zegarFun, 0);
 }
 
-/* Funkcja obs³uguj¹ca klawiaturê */
+/** \brief
+ * Funkcja obsługująca klawiaturę
+ * \param key informacja o klawiszu (kod ASCII)
+ * \param x położenie myszy na osi x (okno) po wciśnięciu klawisza
+ * \param y położenie myszy na osi y (okno) po wciśnięciu klawisza
+ *
+ */
 void keyFunc(unsigned char key, int x, int y)
 {
     if(key=='w' || key=='W')    lookA += 1;
@@ -131,12 +125,18 @@ void keyFunc(unsigned char key, int x, int y)
     if(key=='+'){ zoom+=0.25;}
     if(key=='-'&&zoom>1){zoom-=0.25;};
     if(key == 0x1B){
+        glDeleteLists(informationsAboutElements, 1);
         glDeleteLists(electrons, 1);
         glDeleteLists(protonsAndNeutrons, 1);
         delete chem;
         exit(0);
     }
 }
+/** \brief
+ * Funkcja wykorzystywana przy tworzeniu menu, odczytuje
+ * z pliku nazwy pierwiastków i umieszcza na odpowiedniej
+ * pozycji w menu
+ */
 
 void createMenu(void)
 {
@@ -156,26 +156,36 @@ void createMenu(void)
     file.close();
 }
 
+/** \brief
+ * Funkcja obsługująca menu
+ * \param value Przekazana wartość po kliknięciu w daną opcję,
+ * która jest tu obsługiwana
+ *
+ */
+
 void menu(int value){
     if(value){
         delete chem;
         chem = new ChemicalElement(value);
-        chem->showPeriods();
         glFlush();
         chem->drawElectrons(electrons, angle);
         chem->drawProtonsAndNeutrons(protonsAndNeutrons);
+        chem->showInformationsAboutElement(informationsAboutElements);
     }
     else
     {
         glDeleteLists(electrons, 1);
         glDeleteLists(protonsAndNeutrons, 1);
+        glDeleteLists(informationsAboutElements, 1);
         delete chem;
         exit(0);
     }
 
 }
 
-/* Funkcja g³ówna */
+/** \brief
+ * Funkcja główna
+ */
 int main(int argc, char *argv[])
 {
 
