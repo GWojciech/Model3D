@@ -11,65 +11,69 @@ ChemicalElement::ChemicalElement(int number)
 {
     ifstream file;
     file.open("elements.csv", ios::in);
-    string value;
-    string protons, neutrons, k, l, m, n, o, p, q;
-    string symbol, name, group, period, mass;
-    for(int i=0; i<number; i++)
+    if(file.is_open())
     {
-        getline(file, value);
+        string value;
+        string protons, neutrons, k, l, m, n, o, p, q;
+        string symbol, name, group, period, mass;
+        for(int i=0; i<number; i++)
+        {
+            getline(file, value);
+        }
+        getline(file, symbol, ',');
+        this->symbol=symbol;
+        getline(file, protons, ',');
+        int tmp = atoi(protons.c_str());
+        this->protons = tmp;
+
+        getline(file, neutrons, ',');
+        tmp = atoi(neutrons.c_str());
+        this->neutrons=tmp;
+
+        getline(file, name, ',');
+        this->name=name;
+
+        getline(file, group, ',');
+        tmp = atoi(group.c_str());
+        this->group = tmp;
+
+        getline(file, period, ',');
+        tmp = atoi(period.c_str());
+        this->period=tmp;
+
+        getline(file, k, ',');
+        tmp = atoi(k.c_str());
+        this->k=tmp;
+
+        getline(file, l, ',');
+        tmp = atoi(l.c_str());
+        this->l=tmp;
+
+        getline(file, m, ',');
+        tmp = atoi(m.c_str());
+        this->m=tmp;
+
+        getline(file, n, ',');
+        tmp = atoi(n.c_str());
+        this->n=tmp;
+
+        getline(file, o, ',');
+        tmp = atoi(o.c_str());
+        this->o = tmp;
+
+        getline(file, p, ',');
+        tmp = atoi(p.c_str());
+        this->p = tmp;
+
+        getline(file, q, ',');
+        tmp = atoi(q.c_str());
+        this->q=tmp;
+
+        getline(file, mass, '\n');
+        tmp = atoi(mass.c_str());
+        this-> mass = tmp;
     }
-    getline(file, symbol, ',');
-    this->symbol=symbol;
-    getline(file, protons, ',');
-    int tmp = atoi(protons.c_str());
-    this->protons = tmp;
-
-    getline(file, neutrons, ',');
-    tmp = atoi(neutrons.c_str());
-    this->neutrons=tmp;
-
-    getline(file, name, ',');
-    this->name=name;
-
-    getline(file, group, ',');
-    tmp = atoi(group.c_str());
-    this->group = tmp;
-
-    getline(file, period, ',');
-    tmp = atoi(period.c_str());
-    this->period=tmp;
-
-    getline(file, k, ',');
-    tmp = atoi(k.c_str());
-    this->k=tmp;
-
-    getline(file, l, ',');
-    tmp = atoi(l.c_str());
-    this->l=tmp;
-
-    getline(file, m, ',');
-    tmp = atoi(m.c_str());
-    this->m=tmp;
-
-    getline(file, n, ',');
-    tmp = atoi(n.c_str());
-    this->n=tmp;
-
-    getline(file, o, ',');
-    tmp = atoi(o.c_str());
-    this->o = tmp;
-
-    getline(file, p, ',');
-    tmp = atoi(p.c_str());
-    this->p = tmp;
-
-    getline(file, q, ',');
-    tmp = atoi(q.c_str());
-    this->q=tmp;
-
-    getline(file, mass, '\n');
-    tmp = atoi(mass.c_str());
-    this-> mass = tmp;
+    file.close();
 
 }
 

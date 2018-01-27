@@ -138,17 +138,20 @@ void keyFunc(unsigned char key, int x, int y)
     }
 }
 
-void createMenu(void){
-    ifstream file ("namesOfElements.csv");
-
-    string z;
-
-    int i=1;
-    while(file.good())
+void createMenu(void)
+{
+    ifstream file;
+    file.open("namesOfElements.csv", ios::in);
+    if(file.is_open())
     {
-    getline(file, z);
-    glutAddMenuEntry(z.c_str(), i);
-    i++;
+        string z;
+        int i=1;
+        while(file.good())
+        {
+            getline(file, z);
+            glutAddMenuEntry(z.c_str(), i);
+            i++;
+        }
     }
     file.close();
 }
