@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fillzerotab',['fillZeroTab',['../_chemical_element_8cpp.html#a65003d75426c508f88752e88595fffc1',1,'ChemicalElement.cpp']]]
+  ['fillzerotab',['fillZeroTab',['../help_functions_8cpp.html#a8245310794ede54d78067c96a7b831e6',1,'fillZeroTab(int *tab, int numberOfElements):&#160;helpFunctions.cpp'],['../help_functions_8h.html#a912b36a679c0cc80d081765bbda62c35',1,'fillZeroTab(int *, int):&#160;helpFunctions.cpp']]]
 ];

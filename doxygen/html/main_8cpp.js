@@ -13,6 +13,7 @@ var main_8cpp =
     [ "angle", "main_8cpp.html#ab47b818590551b1663a0cd5c060d92b6", null ],
     [ "chem", "main_8cpp.html#a07b8dafcfd66d82cae5cf51f489088a1", null ],
     [ "electrons", "main_8cpp.html#ac48cfd11baf3ae543e4e49ee8b45fcd4", null ],
+    [ "informationsAboutElements", "main_8cpp.html#a1b8c23b7f8c51c57406469fc86f21f17", null ],
     [ "lightAmb", "main_8cpp.html#a0a9e1eae82c2e751356a66cb1fddb98f", null ],
     [ "lightDif", "main_8cpp.html#a39444e1117d323b6986efe77c515304b", null ],
     [ "lightPos", "main_8cpp.html#a27a8dec8f98a2431080b7beffbe507d3", null ],

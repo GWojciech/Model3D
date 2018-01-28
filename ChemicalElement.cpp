@@ -41,31 +41,31 @@ ChemicalElement::ChemicalElement(int number)
 
         getline(file, k, ',');
         tmp = atoi(k.c_str());
-        this->k=tmp;
+        this->periods[0]=tmp;
 
         getline(file, l, ',');
         tmp = atoi(l.c_str());
-        this->l=tmp;
+        this->periods[1]=tmp;
 
         getline(file, m, ',');
         tmp = atoi(m.c_str());
-        this->m=tmp;
+        this->periods[2]=tmp;
 
         getline(file, n, ',');
         tmp = atoi(n.c_str());
-        this->n=tmp;
+        this->periods[3]=tmp;
 
         getline(file, o, ',');
         tmp = atoi(o.c_str());
-        this->o = tmp;
+        this->periods[4] = tmp;
 
         getline(file, p, ',');
         tmp = atoi(p.c_str());
-        this->p = tmp;
+        this->periods[5] = tmp;
 
         getline(file, q, ',');
         tmp = atoi(q.c_str());
-        this->q=tmp;
+        this->periods[6]=tmp;
 
         getline(file, mass, '\n');
         tmp = atoi(mass.c_str());
@@ -97,61 +97,6 @@ void ChemicalElement::setNeutrons(int neutrons) {
     ChemicalElement::neutrons = neutrons;
 }
 
-int ChemicalElement::getK() const {
-    return k;
-}
-
-void ChemicalElement::setK(int k) {
-    ChemicalElement::k = k;
-}
-
-int ChemicalElement::getL() const {
-    return l;
-}
-
-void ChemicalElement::setL(int l) {
-    ChemicalElement::l = l;
-}
-
-int ChemicalElement::getM() const {
-    return m;
-}
-
-void ChemicalElement::setM(int m) {
-    ChemicalElement::m = m;
-}
-
-int ChemicalElement::getN() const {
-    return n;
-}
-
-void ChemicalElement::setN(int n) {
-    ChemicalElement::n = n;
-}
-
-int ChemicalElement::getO() const {
-    return o;
-}
-
-void ChemicalElement::setO(int o) {
-    ChemicalElement::o = o;
-}
-
-int ChemicalElement::getP() const {
-    return p;
-}
-
-void ChemicalElement::setP(int p) {
-    ChemicalElement::p = p;
-}
-
-int ChemicalElement::getQ() const {
-    return q;
-}
-
-void ChemicalElement::setQ(int q) {
-    ChemicalElement::q = q;
-}
 
 int ChemicalElement::getMass() const {
     return mass;
@@ -194,118 +139,44 @@ void ChemicalElement::setName(const string &name) {
     ChemicalElement::name = name;
 }
 
-void ChemicalElement::drawElectrons(GLuint &electrons, GLfloat electronMovementAngle)
-{
+void ChemicalElement::drawPeriod(int numberOfElectrons, int index, GLfloat electronMovementAngle){
+    GLfloat rotation = (float)360/numberOfElectrons;
+    GLfloat x =(float) 40 + index*5;
+
+        glPushMatrix();
+            for(int i=0; i<numberOfElectrons; i++)
+            {
+                glRotatef(rotation, 0, 1, 0);
+                glPushMatrix();
+                    glRotatef(electronMovementAngle, 0,1,0);
+                    glTranslatef(x, 0, 0);
+                    glColor3f(0, 0, 1);
+                    glutSolidSphere(1, 10, 10);
+                glPopMatrix();
+            }
+        glPopMatrix();
+}
+
+void ChemicalElement::drawElectrons(GLuint &electrons, GLfloat electronMovementAngle){
     glDeleteLists(electrons, 1);
     electrons = glGenLists(1);
     glNewList(electrons, GL_COMPILE);
-    GLfloat rotation = (float)360/k; // tu bêdzie liczba
-    GLfloat rotationAngle = (float)360/period;
+    GLfloat rotationAngle = (float) 360/period;
     glPushMatrix();
-        glRotatef(rotationAngle, 1, 1, 1);
-        glPushMatrix();
-            for(int i=0; i<k; i++)
-            {
-                glRotatef(rotation, 0, 1, 0);
-                glPushMatrix();
-                    glRotatef(electronMovementAngle, 0,1,0);
-                    glTranslatef(40, 0, 0);
-                    glColor3f(0, 0, 1);
-                    glutSolidSphere(1, 10, 10);
-                glPopMatrix();
+        for(int i=0; i<period; i++){
+            if(periods[i]){
+                glRotatef(rotationAngle, 1, 1, 1);
+                drawPeriod(periods[i], i, electronMovementAngle);
             }
-        glPopMatrix();
-        rotation = (float)360/l;
-        glRotatef(rotationAngle, 1, 1, 1);
-        glPushMatrix();
-            for(int i=0; i<l; i++)
-            {
-                glRotatef(rotation, 0, 1, 0);
-                glPushMatrix();
-                    glRotatef(electronMovementAngle, 0,1,0);
-                    glTranslatef(45, 0, 0);
-                    glColor3f(0, 0, 1);
-                    glutSolidSphere(1, 10, 10);
-                glPopMatrix();
-            }
-        glPopMatrix();
-        rotation = (float)360/m; // tu bêdzie liczba
-        glRotatef(rotationAngle, 1, 1, 1);
-        glPushMatrix();
-            for(int i=0; i<m; i++)
-            {
-                glRotatef(rotation, 0, 1, 0);
-                glPushMatrix();
-                    glRotatef(electronMovementAngle, 0,1,0);
-                    glTranslatef(50, 0, 0);
-                    glColor3f(0, 0, 1);
-                    glutSolidSphere(1, 10, 10);
-                glPopMatrix();
-            }
-        glPopMatrix();
-        rotation = (float)360/n;
-        glRotatef(rotationAngle, 1, 1, 1);
-        glPushMatrix();
-            for(int i=0; i<n; i++)
-            {
-                glRotatef(rotation, 0, 1, 0);
-                glPushMatrix();
-                    glRotatef(electronMovementAngle, 0,1,0);
-                    glTranslatef(55, 0, 0);
-                    glColor3f(0, 0, 1);
-                    glutSolidSphere(1, 10, 10);
-                glPopMatrix();
-            }
-        glPopMatrix();
-        rotation = (float)360/o;
-        glRotatef(rotationAngle, 1, 1, 1);
-        glPushMatrix();
-            for(int i=0; i<o; i++)
-            {
-                glRotatef(rotation, 0, 1, 0);
-                glPushMatrix();
-                    glRotatef(electronMovementAngle, 0,1,0);
-                    glTranslatef(60, 0, 0);
-                    glColor3f(0, 0, 1);
-                    glutSolidSphere(1, 10, 10);
-                glPopMatrix();
-            }
-        glPopMatrix();
-        rotation = (float)360/p;
-        glRotatef(rotationAngle, 1, 1, 1);
-        glPushMatrix();
-            for(int i=0; i<p; i++)
-            {
-                glRotatef(rotation, 0, 1, 0);
-                glPushMatrix();
-                    glRotatef(electronMovementAngle, 0,1,0);
-                    glTranslatef(65, 0, 0);
-                    glColor3f(0, 0, 1);
-                    glutSolidSphere(1, 10, 10);
-                glPopMatrix();
-            }
-        glPopMatrix();
-        rotation = (float)360/q;
-        glRotatef(rotationAngle, 1, 1, 1);
-        glPushMatrix();
-            for(int i=0; i<q; i++)
-            {
-                glRotatef(rotation, 0, 1, 0);
-                glPushMatrix();
-                    glRotatef(electronMovementAngle, 0,1,0);
-                    glTranslatef(70, 0, 0);
-                    glColor3f(0, 0, 1);
-                    glutSolidSphere(1, 10, 10);
-                glPopMatrix();
-            }
-        glPopMatrix();
+        }
     glPopMatrix();
     glEndList();
 }
 
+
 int ChemicalElement::drawRing(int number, int index, int nucleons, int colorTab[])
 {
-    GLfloat posY= (float)(4-index)*4.0;
+    GLfloat posY= (float)(4-index)*2.00;
     GLfloat rotation;
     if(number==0)
     {
@@ -324,7 +195,7 @@ int ChemicalElement::drawRing(int number, int index, int nucleons, int colorTab[
     else
     {
         int elements=4;
-        GLfloat posX= number*3.75;
+        GLfloat posX= number*2.75;
         for(int i=0; i<number; i++)
         {
             elements*=2;
@@ -369,19 +240,6 @@ int ChemicalElement::drawRing(int number, int index, int nucleons, int colorTab[
         }
         return elements;
 
-    }
-}
-
-void fillZeroTab(int tab[], int numberOfElements)
-{
-    for(int i=0; i<numberOfElements; i++){
-        tab[i]=0;
-    }
-}
-
-void printTab(int tab[], int numberOfElements){
-    for(int i=0; i<numberOfElements; i++){
-        cout << "tab["<< i << "]: "<< tab[i] <<endl;
     }
 }
 
@@ -495,19 +353,7 @@ void ChemicalElement::drawProtonsAndNeutrons(GLuint &protonsAndNeutrons){
     glEndList();
 }
 
-string intToStr(int n)
-{
-    string tmp, ret;
-    do
-    {
-        tmp += n % 10 + 48;
-        n -= n % 10;
-    }
-    while(n /= 10);
-    for(int i = tmp.size()-1; i >= 0; i--)
-        ret += tmp[i];
-    return ret;
-}
+
 
 void ChemicalElement::showInformationsAboutElement(GLuint &informationsAboutElement)
 {
@@ -515,7 +361,6 @@ void ChemicalElement::showInformationsAboutElement(GLuint &informationsAboutElem
     string informations;
     informations = "<Nazwa:" + name + "> <Symbol:"+ symbol + "> <Protony:" + intToStr(protons) +
                    + "> <Neutrony:" + intToStr(neutrons) + "> <Grupa:" + group + ">";
-    glDeleteLists(informationsAboutElement, 1);
     informationsAboutElement= glGenLists(1);
 	glNewList(informationsAboutElement, GL_COMPILE);
     glColor3f(1.0,1.0,1.0);

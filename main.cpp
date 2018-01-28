@@ -10,21 +10,32 @@
 #include "ChemicalElement.h"
 
 using namespace std;
-#define ANIM_FPS	40	/* Docelowa liczba ramek animacji na sekundê */
-
+///Docelowa liczba ramek animacji na sekundę
+#define ANIM_FPS	40
+///Pierwiastek
 ChemicalElement *chem;
-/* Zmienne pomocnicze */
-static GLfloat lookA;	/* K¹t patrzenia w kierunku pionowym */
-static GLfloat angle;	/* K¹t obrotu obiektów wokó³ œrodka sceny (animacja) */
+
+///Kąt patrzenia w kierunku pionowym
+static GLfloat lookA;
+///Kąt obrotu elektronów
+static GLfloat angle;
+///Kąt patrzenia w kierunku poziomym
 static GLfloat moveCamera;
+///Wartość przybliżenia
 static GLfloat zoom=1;
+///Do listy elektronów
 static GLuint electrons;
+///Do listy protonów i neutronów
 static GLuint protonsAndNeutrons;
+///Do listy odpowiedzialnej za wyświetlenie informacji o pierwiastku
 static GLuint informationsAboutElements;
-/* Parametry œwiat³a i materia³ów */
+///Parametr oświetlenia otoczenia
 static GLfloat lightAmb[] = {0.1, 0.1, 0.1, 1.0};
+///Parametr oświetlenia rozproszenia
 static GLfloat lightDif[] = {0.7, 0.7, 0.7, 1.0};
+///Parametr pozycjonowania światła
 static GLfloat lightPos[] = {100, 200, 0.0, 1.0};
+///Parametr oświetlenia Phonga
 static GLfloat lightSpec[] = {1, 1, 1, 1};
 
 
@@ -188,9 +199,7 @@ void menu(int value){
  */
 int main(int argc, char *argv[])
 {
-
     glutInit(&argc, argv);
-    /* Przygotowanie okna */
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(960, 600);
     glutCreateWindow("Pierwiastki 3D");
@@ -201,19 +210,14 @@ int main(int argc, char *argv[])
     glutAddSubMenu("Pierwiastki", sub1);
     glutAddMenuEntry("Wyjdz", 0);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
-    /* Ustawienie funkcji rysuj¹cej zawartoœæ okna */
     glutDisplayFunc(renderScene);
-    /* Funkcja ustawiaj¹ca parametry po zmianie rozmiaru okna */
     glutReshapeFunc(changeSize);
-    /* Funkcja obs³uguj¹ca klawiaturê */
     glutKeyboardFunc(keyFunc);
 
-    /* Ustawienia OpenGL */
     setupScene();
 
-    /* Start zegara po raz pierwszy */
     glutTimerFunc(1000/ANIM_FPS, zegarFun, 0);
-    /* Wejœcie do g³ównej pêtli programu */
+
     glutMainLoop();
     delete chem;
     return(0);

@@ -15,6 +15,6 @@ var searchData=
   ['setq',['setQ',['../class_chemical_element.html#ac52b2ae721f990f4bd073921acb70d45',1,'ChemicalElement']]],
   ['setsymbol',['setSymbol',['../class_chemical_element.html#ac843054322460ef18f4bd6d78bb9bbe8',1,'ChemicalElement']]],
   ['setupscene',['setupScene',['../main_8cpp.html#aa5313c0246d14f1f51444cc7d3d1362b',1,'main.cpp']]],
-  ['showperiods',['showPeriods',['../class_chemical_element.html#a55bc161e13f9b280f3678e9b5039ea3f',1,'ChemicalElement']]],
+  ['showinformationsaboutelement',['showInformationsAboutElement',['../class_chemical_element.html#afe36dff7cdbc52c8fc006f1835f511b7',1,'ChemicalElement']]],
   ['symbol',['symbol',['../class_chemical_element.html#ab09444e71c8683017ee67ac373f738de',1,'ChemicalElement']]]
 ];

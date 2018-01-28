@@ -1,3 +1,0 @@
-Klikniêcie lewym przyciskiem otwiera menu
-Klawisze "W", "S", "A", "D" s³u¿¹ do obracania modelu
-Klawisz "+" oraz klawisz "-" s³u¿¹ do przybli¿ania i oddalania

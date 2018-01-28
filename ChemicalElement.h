@@ -10,9 +10,10 @@
 #include <ctime>
 #include <string>
 #include <string.h>
+#include "helpFunctions.h"
 
 using namespace std;
-
+///Klasa przechowująca i wykonująca operacje na pierwiastkach
 class ChemicalElement
 {
 public:
@@ -73,6 +74,15 @@ public:
     void drawColors(int tab[]);
 
     /** \brief
+     * Metoda pomocnicza rysująca daną powłokę elektronową
+     * \param numberOfElectrons Liczba elektronów do narysowania
+     * \param index Indeks tablicy, numer powłoki, do odreślenia współrzędnych
+     * \param electronMovementAngle Odpowiedzialny za ruch elektronów
+     *
+     */
+    void drawPeriod(int numberOfElectrons, int index, GLfloat electronMovementAngle);
+
+    /** \brief
      *Wyświetlenie na ekranie infomacji na temat danego pierwiastka
      */
     void showInformationsAboutElement(GLuint &informationsAboutElements);
@@ -112,24 +122,12 @@ private:
     int protons;
     ///liczba neutronów
     int neutrons;
-    ///liczba elektronów na powłoce K
-    int k;
-    ///liczba elektronów na powłoce L
-    int l;
-    ///liczba elektronów na powłoce M
-    int m;
-    ///liczba elektronów na powłoce N
-    int n;
-    ///liczba elektronów na powłoce O
-    int o;
-    ///liczba elektronów na powłoce P
-    int p;
-    ///liczba elektronów na powłoce Q
-    int q;
     ///masa atomowa
     int mass;
     ///liczba powłok
     int period;
+    ///powłoki
+    int periods[7];
     ///numer/nazwa grupy
     string group;
     ///symbol pierwiastka

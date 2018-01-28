@@ -38,6 +38,8 @@
 		</Linker>
 		<Unit filename="ChemicalElement.cpp" />
 		<Unit filename="ChemicalElement.h" />
+		<Unit filename="helpFunctions.cpp" />
+		<Unit filename="helpFunctions.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

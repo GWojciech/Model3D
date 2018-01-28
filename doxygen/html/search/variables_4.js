@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['k',['k',['../class_chemical_element.html#a1f5d9de36a5e9e7e40849bf27602c87a',1,'ChemicalElement']]]
+  ['informationsaboutelements',['informationsAboutElements',['../main_8cpp.html#a1b8c23b7f8c51c57406469fc86f21f17',1,'main.cpp']]]
 ];

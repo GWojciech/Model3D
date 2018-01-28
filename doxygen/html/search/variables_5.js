@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['l',['l',['../class_chemical_element.html#a85c73662db09ba5417e393f4dec6e2be',1,'ChemicalElement']]],
   ['lightamb',['lightAmb',['../main_8cpp.html#a0a9e1eae82c2e751356a66cb1fddb98f',1,'main.cpp']]],
   ['lightdif',['lightDif',['../main_8cpp.html#a39444e1117d323b6986efe77c515304b',1,'main.cpp']]],
   ['lightpos',['lightPos',['../main_8cpp.html#a27a8dec8f98a2431080b7beffbe507d3',1,'main.cpp']]],
