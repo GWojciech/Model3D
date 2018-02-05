@@ -8,22 +8,84 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <string>
+#include <string.h>
+#include "helpFunctions.h"
 
 using namespace std;
-
+///Klasa przechowująca i wykonująca operacje na pierwiastkach
 class ChemicalElement
 {
 public:
+    /** \brief
+     * Konstruktor bez parametrów
+     */
     ChemicalElement();
+
+    /** \brief
+     * Konstruktor tworzący pierwiastek według podanego rekordu
+     * \param number numer rekordu w pliku
+     *
+     */
     ChemicalElement(int number);
+
+    /** \brief
+     * Destruktor
+     */
     virtual ~ChemicalElement();
+
+    /** \brief
+     * Metoda odpowiedzialna za rysowanie elektronów
+     *\param electronMovementAngle Odpowiedzialny za ruch elektronów
+     *\param &electrons Odpowiedzialny za listę elektronów
+     */
     void drawElectrons(GLuint &electrons, GLfloat electronMovementAngle);
+
+    /** \brief
+     * Metoda wywołująca rysowanie protonów i neutronów
+     *
+     * \param &protonsAndNeutrons Odpowiedzialny za listę elektronów
+     *
+     */
     void drawProtonsAndNeutrons(GLuint &protonsAndNeutrons);
-    void helpForDrawProtonsAndNeutrons();
+
+    /** \brief
+     * Metoda pomocnicza, zarządzająca rysowaniem protonów i neutronów
+     *
+     */
     void drawByRings(void);
-    void drawCircle(int elements, GLfloat x, GLfloat y);
-    void drawProtonsAndNeutronsRandom();
-    void showPeriods();
+
+    /** \brief
+     * Metoda pomocnicza rysująca "pierścień" składający się z protonów i neutronów
+     * \param number wartość tablicy pomocniczej służącej do obliczenia pozycji na osi X
+     * \param index indeks tablicy pomocniczej służącej do obliczenia pozycji na osi Y
+     * \param nucleons liczba pozostałych do narysowania nukleonów (protony+neutrony)
+     * \param colorTab tablica przechowująca wylosowane wartości służące do narysowania sfery w odpowiednim kolorze
+     * \return liczba narysowanych nukleonów
+     *
+     */
+    int drawRing(int number, int index, int nucleons, int colorTab[]);
+
+    /** \brief
+     * Metoda losująca wartości odpowiedzialnych za kolory nukleonów
+     * \param tab tablica przechowująca wartości, służące do określenia kolorów nukleonów,
+     *
+     */
+    void drawColors(int tab[]);
+
+    /** \brief
+     * Metoda pomocnicza rysująca daną powłokę elektronową
+     * \param numberOfElectrons Liczba elektronów do narysowania
+     * \param index Indeks tablicy, numer powłoki, do odreślenia współrzędnych
+     * \param electronMovementAngle Odpowiedzialny za ruch elektronów
+     *
+     */
+    void drawPeriod(int numberOfElectrons, int index, GLfloat electronMovementAngle);
+
+    /** \brief
+     *Wyświetlenie na ekranie infomacji na temat danego pierwiastka
+     */
+    void showInformationsAboutElement(GLuint &informationsAboutElements);
     int getProtons() const;
     void setProtons(int protons);
     int getNeutrons() const;
@@ -44,10 +106,10 @@ public:
     void setQ(int q);
     int getMass() const;
     void setMass(int mass);
-    int getGroup() const;
-    void setGroup(int group);
     int getPeriod() const;
     void setPeriod(int period);
+    const string &getGroup() const;
+    void setGroup(const string &symbol);
     const string &getSymbol() const;
     void setSymbol(const string &symbol);
     const string &getName() const;
@@ -56,19 +118,21 @@ public:
 protected:
 
 private:
+    ///liczba protonów
     int protons;
+    ///liczba neutronów
     int neutrons;
-    int k;
-    int l;
-    int m;
-    int n;
-    int o;
-    int p;
-    int q;
+    ///masa atomowa
     int mass;
-    int group;
+    ///liczba powłok
     int period;
+    ///powłoki
+    int periods[7];
+    ///numer/nazwa grupy
+    string group;
+    ///symbol pierwiastka
     string symbol;
+    ///nazwa pierwiastka
     string name;
 };
 

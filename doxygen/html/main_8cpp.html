@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>Pierwiastki 3D: Dokumentacja pliku main.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Pierwiastki 3D
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="annotated.html"><span>Klasy</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;plików</span></a></li>
+      <li><a href="globals.html"><span>Składowe&#160;plików</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('main_8cpp.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Definicje</a> &#124;
+<a href="#func-members">Funkcje</a> &#124;
+<a href="#var-members">Zmienne</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja pliku main.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;gl/gl.h&gt;</code><br />
+<code>#include &lt;gl/glu.h&gt;</code><br />
+<code>#include &lt;gl/glut.h&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &quot;<a class="el" href="_chemical_element_8h_source.html">ChemicalElement.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definicje</h2></td></tr>
+<tr class="memitem:ab07b3c93a1236fc83b162fb0a8945d72"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ab07b3c93a1236fc83b162fb0a8945d72">GLUT_DISABLE_ATEXIT_HACK</a></td></tr>
+<tr class="separator:ab07b3c93a1236fc83b162fb0a8945d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4086b81b1740f76583d66d9e588656a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a4086b81b1740f76583d66d9e588656a9">ANIM_FPS</a>&#160;&#160;&#160;40</td></tr>
+<tr class="memdesc:a4086b81b1740f76583d66d9e588656a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docelowa liczba ramek animacji na sekundę  <a href="#a4086b81b1740f76583d66d9e588656a9">Więcej...</a><br /></td></tr>
+<tr class="separator:a4086b81b1740f76583d66d9e588656a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkcje</h2></td></tr>
+<tr class="memitem:aa5313c0246d14f1f51444cc7d3d1362b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aa5313c0246d14f1f51444cc7d3d1362b">setupScene</a> (void)</td></tr>
+<tr class="memdesc:aa5313c0246d14f1f51444cc7d3d1362b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja ustawia parametry renderowania i oświetlenie wywoływana na początku programu.  <a href="#aa5313c0246d14f1f51444cc7d3d1362b">Więcej...</a><br /></td></tr>
+<tr class="separator:aa5313c0246d14f1f51444cc7d3d1362b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33e20b37682a0492a9e95d13bef17f02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a33e20b37682a0492a9e95d13bef17f02">changeSize</a> (int w, int h)</td></tr>
+<tr class="memdesc:a33e20b37682a0492a9e95d13bef17f02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja odpowiedzialna za odpowiednie ustawienie okna w przypadku zmiany rozmiaru.  <a href="#a33e20b37682a0492a9e95d13bef17f02">Więcej...</a><br /></td></tr>
+<tr class="separator:a33e20b37682a0492a9e95d13bef17f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a96aed746d13d9b42d7888e156045f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a2a96aed746d13d9b42d7888e156045f6">renderScene</a> (void)</td></tr>
+<tr class="memdesc:a2a96aed746d13d9b42d7888e156045f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja rysująca.  <a href="#a2a96aed746d13d9b42d7888e156045f6">Więcej...</a><br /></td></tr>
+<tr class="separator:a2a96aed746d13d9b42d7888e156045f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6069cf27c7e4233ff0cee5595f87d4f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a6069cf27c7e4233ff0cee5595f87d4f4">zegarFun</a> (int val)</td></tr>
+<tr class="memdesc:a6069cf27c7e4233ff0cee5595f87d4f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja zegarowa.  <a href="#a6069cf27c7e4233ff0cee5595f87d4f4">Więcej...</a><br /></td></tr>
+<tr class="separator:a6069cf27c7e4233ff0cee5595f87d4f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aced247a3dd6aaa9aa99a3d947be487"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a3aced247a3dd6aaa9aa99a3d947be487">keyFunc</a> (unsigned char key, int x, int y)</td></tr>
+<tr class="memdesc:a3aced247a3dd6aaa9aa99a3d947be487"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja obsługująca klawiaturę  <a href="#a3aced247a3dd6aaa9aa99a3d947be487">Więcej...</a><br /></td></tr>
+<tr class="separator:a3aced247a3dd6aaa9aa99a3d947be487"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab831fe7c991e2f59d5a655fa1eea199f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ab831fe7c991e2f59d5a655fa1eea199f">createMenu</a> (void)</td></tr>
+<tr class="memdesc:ab831fe7c991e2f59d5a655fa1eea199f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja wykorzystywana przy tworzeniu menu, odczytuje z pliku nazwy pierwiastków i umieszcza na odpowiedniej pozycji w menu.  <a href="#ab831fe7c991e2f59d5a655fa1eea199f">Więcej...</a><br /></td></tr>
+<tr class="separator:ab831fe7c991e2f59d5a655fa1eea199f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a871fd9424d4b79de811be617326020b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a871fd9424d4b79de811be617326020b0">menu</a> (int value)</td></tr>
+<tr class="memdesc:a871fd9424d4b79de811be617326020b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja obsługująca menu.  <a href="#a871fd9424d4b79de811be617326020b0">Więcej...</a><br /></td></tr>
+<tr class="separator:a871fd9424d4b79de811be617326020b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja główna.  <a href="#a0ddf1224851353fc92bfbff6f499fa97">Więcej...</a><br /></td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Zmienne</h2></td></tr>
+<tr class="memitem:a07b8dafcfd66d82cae5cf51f489088a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_chemical_element.html">ChemicalElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a07b8dafcfd66d82cae5cf51f489088a1">chem</a></td></tr>
+<tr class="memdesc:a07b8dafcfd66d82cae5cf51f489088a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pierwiastek.  <a href="#a07b8dafcfd66d82cae5cf51f489088a1">Więcej...</a><br /></td></tr>
+<tr class="separator:a07b8dafcfd66d82cae5cf51f489088a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af54bd868ce3918d7ef84e375004fda09"><td class="memItemLeft" align="right" valign="top">static GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#af54bd868ce3918d7ef84e375004fda09">lookA</a></td></tr>
+<tr class="memdesc:af54bd868ce3918d7ef84e375004fda09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kąt patrzenia w kierunku pionowym.  <a href="#af54bd868ce3918d7ef84e375004fda09">Więcej...</a><br /></td></tr>
+<tr class="separator:af54bd868ce3918d7ef84e375004fda09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab47b818590551b1663a0cd5c060d92b6"><td class="memItemLeft" align="right" valign="top">static GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ab47b818590551b1663a0cd5c060d92b6">angle</a></td></tr>
+<tr class="memdesc:ab47b818590551b1663a0cd5c060d92b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kąt obrotu elektronów.  <a href="#ab47b818590551b1663a0cd5c060d92b6">Więcej...</a><br /></td></tr>
+<tr class="separator:ab47b818590551b1663a0cd5c060d92b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2e31356e1cff1f5d88222d6f6e1c4ec"><td class="memItemLeft" align="right" valign="top">static GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae2e31356e1cff1f5d88222d6f6e1c4ec">moveCamera</a></td></tr>
+<tr class="memdesc:ae2e31356e1cff1f5d88222d6f6e1c4ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kąt patrzenia w kierunku poziomym.  <a href="#ae2e31356e1cff1f5d88222d6f6e1c4ec">Więcej...</a><br /></td></tr>
+<tr class="separator:ae2e31356e1cff1f5d88222d6f6e1c4ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a2149a845f88b6489d3d88845d0f257"><td class="memItemLeft" align="right" valign="top">static GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a5a2149a845f88b6489d3d88845d0f257">zoom</a> =1</td></tr>
+<tr class="memdesc:a5a2149a845f88b6489d3d88845d0f257"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wartość przybliżenia.  <a href="#a5a2149a845f88b6489d3d88845d0f257">Więcej...</a><br /></td></tr>
+<tr class="separator:a5a2149a845f88b6489d3d88845d0f257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac48cfd11baf3ae543e4e49ee8b45fcd4"><td class="memItemLeft" align="right" valign="top">static GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ac48cfd11baf3ae543e4e49ee8b45fcd4">electrons</a></td></tr>
+<tr class="memdesc:ac48cfd11baf3ae543e4e49ee8b45fcd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do listy elektronów.  <a href="#ac48cfd11baf3ae543e4e49ee8b45fcd4">Więcej...</a><br /></td></tr>
+<tr class="separator:ac48cfd11baf3ae543e4e49ee8b45fcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26299a35ab161aeab6d78bdd163273df"><td class="memItemLeft" align="right" valign="top">static GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a26299a35ab161aeab6d78bdd163273df">protonsAndNeutrons</a></td></tr>
+<tr class="memdesc:a26299a35ab161aeab6d78bdd163273df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do listy protonów i neutronów.  <a href="#a26299a35ab161aeab6d78bdd163273df">Więcej...</a><br /></td></tr>
+<tr class="separator:a26299a35ab161aeab6d78bdd163273df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b8c23b7f8c51c57406469fc86f21f17"><td class="memItemLeft" align="right" valign="top">static GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a1b8c23b7f8c51c57406469fc86f21f17">informationsAboutElements</a></td></tr>
+<tr class="memdesc:a1b8c23b7f8c51c57406469fc86f21f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do listy odpowiedzialnej za wyświetlenie informacji o pierwiastku.  <a href="#a1b8c23b7f8c51c57406469fc86f21f17">Więcej...</a><br /></td></tr>
+<tr class="separator:a1b8c23b7f8c51c57406469fc86f21f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a9e1eae82c2e751356a66cb1fddb98f"><td class="memItemLeft" align="right" valign="top">static GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a0a9e1eae82c2e751356a66cb1fddb98f">lightAmb</a> [] = {0.1, 0.1, 0.1, 1.0}</td></tr>
+<tr class="memdesc:a0a9e1eae82c2e751356a66cb1fddb98f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parametr oświetlenia otoczenia.  <a href="#a0a9e1eae82c2e751356a66cb1fddb98f">Więcej...</a><br /></td></tr>
+<tr class="separator:a0a9e1eae82c2e751356a66cb1fddb98f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39444e1117d323b6986efe77c515304b"><td class="memItemLeft" align="right" valign="top">static GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a39444e1117d323b6986efe77c515304b">lightDif</a> [] = {0.7, 0.7, 0.7, 1.0}</td></tr>
+<tr class="memdesc:a39444e1117d323b6986efe77c515304b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parametr oświetlenia rozproszenia.  <a href="#a39444e1117d323b6986efe77c515304b">Więcej...</a><br /></td></tr>
+<tr class="separator:a39444e1117d323b6986efe77c515304b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27a8dec8f98a2431080b7beffbe507d3"><td class="memItemLeft" align="right" valign="top">static GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a27a8dec8f98a2431080b7beffbe507d3">lightPos</a> [] = {100, 200, 0.0, 1.0}</td></tr>
+<tr class="memdesc:a27a8dec8f98a2431080b7beffbe507d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parametr pozycjonowania światła.  <a href="#a27a8dec8f98a2431080b7beffbe507d3">Więcej...</a><br /></td></tr>
+<tr class="separator:a27a8dec8f98a2431080b7beffbe507d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acca0b3dd03ca3d80ae83a811a5cd7b0e"><td class="memItemLeft" align="right" valign="top">static GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#acca0b3dd03ca3d80ae83a811a5cd7b0e">lightSpec</a> [] = {1, 1, 1, 1}</td></tr>
+<tr class="memdesc:acca0b3dd03ca3d80ae83a811a5cd7b0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parametr oświetlenia Phonga.  <a href="#acca0b3dd03ca3d80ae83a811a5cd7b0e">Więcej...</a><br /></td></tr>
+<tr class="separator:acca0b3dd03ca3d80ae83a811a5cd7b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentacja definicji</h2>
+<a class="anchor" id="a4086b81b1740f76583d66d9e588656a9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ANIM_FPS&#160;&#160;&#160;40</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Docelowa liczba ramek animacji na sekundę </p>
+
+</div>
+</div>
+<a class="anchor" id="ab07b3c93a1236fc83b162fb0a8945d72"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GLUT_DISABLE_ATEXIT_HACK</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji</h2>
+<a class="anchor" id="a33e20b37682a0492a9e95d13bef17f02"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changeSize </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja odpowiedzialna za odpowiednie ustawienie okna w przypadku zmiany rozmiaru. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>szerokość ekranu </td></tr>
+    <tr><td class="paramname">h</td><td>wysokość ekranu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab831fe7c991e2f59d5a655fa1eea199f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void createMenu </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja wykorzystywana przy tworzeniu menu, odczytuje z pliku nazwy pierwiastków i umieszcza na odpowiedniej pozycji w menu. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3aced247a3dd6aaa9aa99a3d947be487"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void keyFunc </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja obsługująca klawiaturę </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>informacja o klawiszu (kod ASCII) </td></tr>
+    <tr><td class="paramname">x</td><td>położenie myszy na osi x (okno) po wciśnięciu klawisza </td></tr>
+    <tr><td class="paramname">y</td><td>położenie myszy na osi y (okno) po wciśnięciu klawisza </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja główna. </p>
+
+</div>
+</div>
+<a class="anchor" id="a871fd9424d4b79de811be617326020b0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void menu </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja obsługująca menu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Przekazana wartość po kliknięciu w daną opcję, która jest tu obsługiwana </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a2a96aed746d13d9b42d7888e156045f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void renderScene </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja rysująca. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa5313c0246d14f1f51444cc7d3d1362b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setupScene </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja ustawia parametry renderowania i oświetlenie wywoływana na początku programu. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6069cf27c7e4233ff0cee5595f87d4f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zegarFun </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja zegarowa. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>wartość </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja zmiennych</h2>
+<a class="anchor" id="ab47b818590551b1663a0cd5c060d92b6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat angle</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kąt obrotu elektronów. </p>
+
+</div>
+</div>
+<a class="anchor" id="a07b8dafcfd66d82cae5cf51f489088a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_chemical_element.html">ChemicalElement</a>* chem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pierwiastek. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac48cfd11baf3ae543e4e49ee8b45fcd4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLuint electrons</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Do listy elektronów. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1b8c23b7f8c51c57406469fc86f21f17"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLuint informationsAboutElements</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Do listy odpowiedzialnej za wyświetlenie informacji o pierwiastku. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0a9e1eae82c2e751356a66cb1fddb98f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat lightAmb[] = {0.1, 0.1, 0.1, 1.0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parametr oświetlenia otoczenia. </p>
+
+</div>
+</div>
+<a class="anchor" id="a39444e1117d323b6986efe77c515304b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat lightDif[] = {0.7, 0.7, 0.7, 1.0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parametr oświetlenia rozproszenia. </p>
+
+</div>
+</div>
+<a class="anchor" id="a27a8dec8f98a2431080b7beffbe507d3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat lightPos[] = {100, 200, 0.0, 1.0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parametr pozycjonowania światła. </p>
+
+</div>
+</div>
+<a class="anchor" id="acca0b3dd03ca3d80ae83a811a5cd7b0e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat lightSpec[] = {1, 1, 1, 1}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parametr oświetlenia Phonga. </p>
+
+</div>
+</div>
+<a class="anchor" id="af54bd868ce3918d7ef84e375004fda09"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat lookA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kąt patrzenia w kierunku pionowym. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae2e31356e1cff1f5d88222d6f6e1c4ec"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat moveCamera</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kąt patrzenia w kierunku poziomym. </p>
+
+</div>
+</div>
+<a class="anchor" id="a26299a35ab161aeab6d78bdd163273df"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLuint protonsAndNeutrons</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Do listy protonów i neutronów. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5a2149a845f88b6489d3d88845d0f257"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat zoom =1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wartość przybliżenia. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="main_8cpp.html">main.cpp</a></li>
+    <li class="footer">Wygenerowano N, 28 sty 2018 00:24:32 dla Pierwiastki 3D programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
+</body>
+</html>
